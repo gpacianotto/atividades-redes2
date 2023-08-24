@@ -1,17 +1,25 @@
 import HexNumber
-
-hexmap = ['0', '1', '2', '3', '4', '5','6','7','8','9','A','B','C','D','E','F']
+import NumberProcessor
 
 class IPv6Interpreter:
     def __init__(self, prefix):
         self.hex_map = HexNumber.HexNumber([False,False,False,False]).hex_map
         self.prefix = prefix
+        print("prefix " + prefix)
 
     def process_address(self):
         raw = self.prefix
-
+        result = {
+            "hexa_values": []
+        }
         for char in raw:
-            if(self.hex_map.__contains__(char)):
-                print(char)
+            char_upper = char.upper()
+            if char_upper in self.hex_map.values():
+                binary_array = NumberProcessor.NumberProcessor().hexa_to_binary_array(char_upper)
+                hexa_number = HexNumber.HexNumber(binary_array)
+                result["hexa_values"].append(hexa_number)
+            # elif char_upper == ":":
+
             else:
                 print("X")
+        print(result)

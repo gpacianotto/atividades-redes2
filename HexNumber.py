@@ -12,7 +12,37 @@ class HexNumber:
         self.bool_array = bool_array
         self.genDecimalValue()
         self.genHexaChar()
+        self.gen_binary_array()
+        self.gen_binary_string()
+    
+    def __str__(self):
+        return self.bool_array
+    
+    def __repr__(self) -> str:
+        return str(self.bool_array)
+
+    def gen_binary_array(self) :
+        result = []
+        for state in self.bool_array:
+            if state == True:
+                result.append(1)
+            elif state == False:
+                result.append(0)
+            else: result.append(-1)
         
+        self.binary_array = result
+    
+    def gen_binary_string(self):
+        binary_array = self.binary_array
+        result = ""
+        for binary in binary_array:
+            if(binary == 1):
+                result+="1"
+            elif(binary == 0):
+                result+="0"
+        
+        self.binary_string = result
+
 
     def genDecimalValue(self):
         value = 0
