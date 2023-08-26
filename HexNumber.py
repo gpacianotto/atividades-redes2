@@ -16,10 +16,10 @@ class HexNumber:
         self.gen_binary_string()
     
     def __str__(self):
-        return self.bool_array
+        return "\n" + self.binary_string
     
     def __repr__(self) -> str:
-        return str(self.bool_array)
+        return "\n" + self.binary_string
 
     def gen_binary_array(self) :
         result = []
